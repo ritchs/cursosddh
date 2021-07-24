@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label>Nombre Completo</label>
+        <input type="text" class="form-control" formControlName="name" />
+      </div>
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label>Curso</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" class="form-control" formControlName="id_course" >
+          <option selected>Choose...</option>
+          <option *ngFor="let course of courseList" value="{{course.id}}">{{course.name}}</option>   
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" class="form-control" formControlName="date" />
+      </div>
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label>Lugar</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" class="form-control" formControlName="id_place" >
+          <option selected>Choose...</option>
+          <option *ngFor="let place of placeList" value="{{place.id}}">{{place.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label>Constancia</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" class="form-control" formControlName="constancy" >
+          <option selected>Choose...</option>
+          <option value="No">No entregada</option>
+          <option value="Si">Entregada</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+    <button class="btn btn-primary" (click)="saveParti()" [disabled]="form.invalid">Save</button>
+  </div>

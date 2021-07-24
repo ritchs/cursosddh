@@ -1,0 +1,33 @@
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+  </div>
+  <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:30px;color:black"></i></button>  
+  <button class="btn btn-primary float-right mb-2" (click)="showPartiModal()">Add Participante</button>
+  <div class="clearfix"></div>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Lugar</th>
+        <th scope="col">Constancia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filterData | filter:term" >
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.coursename}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.placename}}</td>
+        <td>{{item.constancy}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #templateModalParti>
+    <app-participants-modal-addparti
+      [modalRef]="modalRef"
+    ></app-participants-modal-addparti>
+  </ng-template>
